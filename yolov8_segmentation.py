@@ -3,9 +3,6 @@ import numpy as np
 import os
 import time
 
-data_sitekey="6Lfx8VcqAAAAAN8tmiS47iegq9Ga0nEXDrdaL0D4"
-hchapta_secret_key = "ES_831df69666c34a1ea2eaa6d57f88e278"
-hcaptcha_sitekey = "2a2a5a5c-ff3e-40f4-8c58-c87e89945486"
 
 def checktime(loc, minutes):
     timer = int(time.time())
