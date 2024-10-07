@@ -9,6 +9,7 @@ __pycache__/
 *.jpeg
 *.png
 *.jpg
+static/bgremoved/*.txt
 # Distribution / packaging
 .Python
 build/

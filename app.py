@@ -2,14 +2,12 @@ from flask import Flask, render_template, request, send_from_directory, redirect
 from werkzeug.utils import secure_filename
 import os
 from ultralytics import YOLO
-import yolov8_segmentation as bruh
-import cv2
+import yolov8_segmentation as seg
 import shutil
-import http
 
 
 
-model = YOLO("yolov8X-seg.pt")
+model = YOLO("yolov8x-seg.pt")
 
 app = Flask(__name__)
 
@@ -29,13 +27,13 @@ def upload_file():
         file = request.files['img']
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD'], filename))
-        filepath = bruh.getpersonsegmentation(model=model, imagepath=os.path.join(app.config['UPLOAD'], filename), destination=app.config['BGFOLDER'])
+        filepath = seg.getpersonsegmentation(model=model, imagepath=os.path.join(app.config['UPLOAD'], filename), destination=app.config['BGFOLDER'])
         print(filepath)
         if not filepath:
             print("it is in there")
             return render_template('image_render.html', noperson=True)
-        bruh.delete_all_png_files(app.config["CACHE"])
-        bruh.checktime(app.config['BGFOLDER'], 5)
+        seg.delete_all_png_files(app.config["CACHE"])
+        seg.checktime(app.config['BGFOLDER'], 5)
         return render_template('image_render.html', img=filepath)
     return render_template('image_render.html')
 
@@ -48,7 +46,7 @@ def makechange(filepath):
     if checkbox_value == "true":
         shutil.copy2(path, dest)
     else:
-        bruh.changebgcolor(path, color_value, dest)
+        seg.changebgcolor(path, color_value, dest)
     return redirect(url_for('download', filepath=filepath))
 
 @app.route('/static/bgremoved/cache/<filepath>', methods=['GET', 'POST'])
