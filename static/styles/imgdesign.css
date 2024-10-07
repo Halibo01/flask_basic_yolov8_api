@@ -1,0 +1,433 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;  /* Arkaplan rengi */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(0, 47, 255, 0.055);
+}
+
+#image {
+    max-width: 80vw;
+    max-height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+#image_div {
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#color {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  display: none; /* Varsayılan olarak gizle */
+  margin-bottom: 20px;
+}
+
+#colorPicker {
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* H1 Başlık düzeni */
+h1 {
+  font-size: 1.5rem;
+  color: #444;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+#container {
+  max-width: 60vw;
+  background-color: #faf0e660;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  margin-top: 30px;
+  margin-bottom: 30px;  
+}
+
+.checkboxcontainer {
+  display: inline-flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.checkboxcontainer label {
+  font-size: 0.9rem;
+  margin-left: 10px;
+  color: #333;
+}
+
+
+.button {
+    --width: 100px;
+    --height: 35px;
+    --tooltip-height: 35px;
+    --tooltip-width: 90px;
+    --gap-between-tooltip-to-button: 18px;
+    --button-color: #1163ff;
+    width: var(--width);
+    height: var(--height);
+    background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  transition: background 0.3s;
+  margin: 0 auto;
+}
+  
+  .button::before {
+    position: absolute;
+    background-color: var(--tooltip-color);
+    font-size: 0.9rem;
+    color: #111;
+    border-radius: .25em;
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+    left: calc(50% - var(--tooltip-width) / 2);
+  }
+  
+  .button::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    left: calc(50% - 10px);
+    bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+  }
+  
+  .button::after,.button::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+  }
+  
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.button-wrapper,.text,.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+  }
+  
+.text {
+  top: 0
+  }
+  
+  .text,.icon {
+    transition: top 0.5s;
+  }
+  
+  .icon {
+    color: #fff;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .button:hover {
+    background: #6c18ff;
+  }
+  
+  .button:hover .text {
+    top: -100%;
+  }
+  
+  .button:hover .icon {
+    top: 0;
+  }
+  
+  .button:hover:before,.button:hover:after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .button:hover:after {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+  }
+  
+  .button:hover:before {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+  }
+  
+.submitbutton:hover {
+  background: #6c18ff;
+}
+
+
+
+.submitbutton:hover .icon {
+  top: 0;
+}
+.submitbutton {
+    --width: 100px;
+    --height: 35px;
+    --gap-between-tooltip-to-button: 18px;
+    --button-color: #1163ff;
+    margin-top: 15px;
+    width: var(--width);
+    height: var(--height);
+    background: var(--button-color);
+    position: relative;
+    text-align: center;
+    border-radius: 0.45em;
+    font-family: "Arial";
+    transition: background 0.4s;
+}
+.form {
+    background-color: #f0f2f5;
+    box-shadow: 0 10px 60px rgb(218, 229, 255);
+    border: 1px solid rgb(159, 159, 160);
+    border-radius: 20px;
+    padding: 2rem .7rem .7rem .7rem;
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 380px;
+    margin: auto;
+  }
+  
+  .form-title {
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  
+  .form-paragraph {
+    margin-top: 10px;
+    font-size: 0.9375rem;
+    color: rgb(105, 105, 105);
+  }
+  
+  .drop-container {
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin-top: 2.1875rem;
+    border-radius: 15px;
+    border: 2px dashed rgb(171, 202, 255);
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+  }
+  
+  .drop-container:hover {
+    background: rgba(0, 140, 255, 0.164);
+    border-color: rgba(17, 17, 17, 0.616);
+  }
+  
+  .drop-container:hover .drop-title {
+    color: #222;
+  }
+  
+  .drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+  }
+  
+  #file-input {
+    width: 350vw;
+    max-width: 100%;
+    color: #444;
+    padding: 2px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+  }
+  
+  #file-input::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  #file-input::file-selector-button:hover {
+    background: #0d45a5;
+  }
+
+  .checkboxcontainer {
+    --input-focus: #2d8cf0;
+    --input-out-of-focus: #ccc;
+    --bg-color: #fff;
+    --bg-color-alt: #666;
+    --main-color: #323232;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .checkboxcontainer input {
+    position: absolute;
+    opacity: 0;
+  }
+  
+  .checkmark {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    box-shadow: 1px var(--main-color);
+    background-color: var(--input-out-of-focus);
+    transition: all 0.3s;
+  }
+  
+  .checkboxcontainer input:checked ~ .checkmark {
+    background-color: var(--input-focus);
+  }
+  
+  .checkmark:after {
+    content: "";
+    width: 7px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    display: none;
+    border: solid var(--bg-color);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+  }
+  
+  .checkboxcontainer input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 15px #00000027;
+    padding: 15px 10px;
+    border-radius: 5em;
+    position: fixed;
+    bottom:0;
+    right: 0;
+    margin: 20px;
+  }
+  
+  .social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 90%;
+    margin: 0 10px;
+    background-color: #f1f1f1;
+    box-shadow: 0px 0px 4px #00000027;
+    transition: 0.3s;
+  }
+  
+  .social-button:hover {
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 6px 3px #00000027;
+  }
+  
+  .social-buttons svg {
+    transition: 0.3s;
+    height: 20px;
+  }
+  
+  .facebook {
+    background-color: #3b5998;
+  }
+  
+  .facebook svg {
+    fill: #f2f2f2;
+  }
+  
+  .facebook:hover svg {
+    fill: #3b5998;
+  }
+  
+  .github {
+    background-color: #333;
+  }
+  
+  .github svg {
+    width: 25px;
+    height: 25px;
+    fill: #f2f2f2;
+  }
+  
+  .github:hover svg {
+    fill: #333;
+  }
+  
+  .linkedin {
+    background-color: #0077b5;
+  }
+  
+  .linkedin svg {
+    fill: #f2f2f2;
+  }
+  
+  .linkedin:hover svg {
+    fill: #0077b5;
+  }
+  
+  .instagram {
+    background-color: #c13584;
+  }
+  
+  .instagram svg {
+    fill: #f2f2f2;
+  }
+  
+  .instagram:hover svg {
+    fill: #c13584;
+  }
+  
+  .www {
+    background-color: #000080;
+  }
+  .www svg {
+    fill: #f2f2f2;
+  }
+  
+  .www:hover svg {
+    fill:#000080;
+  }
+  #checklabel {
+    margin-left: 14px;
+    margin-right: 25px;
+  }
