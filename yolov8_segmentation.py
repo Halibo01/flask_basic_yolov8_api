@@ -15,6 +15,7 @@ def checktime(loc, minutes):
             os.remove(file_p[:-3] + "png")
 
 def getpersonsegmentation(model, imagepath, destination):
+    os.makedirs(destination, exist_ok=True)
     image = cv2.imread(imagepath) 
     results = model(image, verbose=False, save=True, conf=0.6)  
     kernel = np.ones((7, 7), np.uint8)  
@@ -69,6 +70,7 @@ def changebgcolor(pngimagepath:str, hex:str, destination:str):
     rgbcode = [b, g, r]
     pngimage[pngimage[:, :, 3] == 0] = rgbcode + [255]
     bgrimage = cv2.cvtColor(pngimage, cv2.COLOR_BGRA2BGR)
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
     cv2.imwrite(destination, bgrimage)
 
 def delete_all_png_files(folder_path):

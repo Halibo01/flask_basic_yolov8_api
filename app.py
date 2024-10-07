@@ -33,7 +33,7 @@ def upload_file():
             print("it is in there")
             return render_template('image_render.html', noperson=True)
         seg.delete_all_png_files(app.config["CACHE"])
-        seg.checktime(app.config['BGFOLDER'], 5)
+        seg.checktime(app.config['BGFOLDER'], 5) # uploaded files will be removed in 5 minutes
         return render_template('image_render.html', img=filepath)
     return render_template('image_render.html')
 
@@ -58,7 +58,7 @@ def handle_bad_request(_):
     return render_template("badrequest.html"), 400
 
 @app.errorhandler(404)
-def noaddress(e):
+def noaddress(_):
     return render_template("handler.html"), 404
 
 @app.errorhandler(Exception)
