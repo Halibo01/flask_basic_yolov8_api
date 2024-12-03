@@ -16,8 +16,10 @@ def checktime(loc, minutes):
 
 def getpersonsegmentation(model, imagepath, destination):
     os.makedirs(destination, exist_ok=True)
-    image = cv2.imread(imagepath) 
-    results = model(image, verbose=False, save=True, conf=0.6)  
+    image = cv2.imread(imagepath)
+    print(imagepath)
+    os.remove(imagepath)
+    results = model(image, verbose=False, conf=0.6)  
     kernel = np.ones((7, 7), np.uint8)  
     try:
         masks = results[0].masks.data.cpu().numpy() 
@@ -52,7 +54,7 @@ def getpersonsegmentation(model, imagepath, destination):
 
     
     rgba_image[rgba_image[:, :, 3] == 0] = [0, 0, 0, 0]
-    os.remove(imagepath)
+    
     filename = os.path.join(destination, os.path.basename(imagepath).split(".")[0] + ".png")
     cv2.imwrite(filename, rgba_image)
     with open(filename[:-3] + "txt", "w") as file:

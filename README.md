@@ -1,2 +1,4 @@
 # flask_basic_yolov8_api
- flask basic api
+This API is provided solely for educational purposes to demonstrate how to create an API using Flask. The design and functionality of the code may be replicated or adapted; however, the direct use of this code for commercial purposes is strictly prohibited. This restriction is in place because the code, in its current state, is not secure against potential injection attacks and data theft.
+
+Users are advised to run this code only on local environments or make necessary modifications to enhance its security before deployment. A more secure version of the code will be released in the future. Until then, this code should only be used in local testing environments.
